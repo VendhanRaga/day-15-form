@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables </title>
+    <style>
+        tr,td,th {
+            border: 3px solid red;
+            margin: 15px;
+            padding:10px;
+        }
+    </style>
+   
+</head>
+<body style="background: #e3f9ff;">
+    
+        <form id="form" >
+        <label for="">Firstname</label><br>
+        <input type="text" name="fname" placeholder="firstname"><br>
+        <br>
+        <label for="">Lastname</label><br>
+        <input type="text" name="lname" placeholder="Lastname"><br>
+         <br>
+         <label for="">Email</label><br>
+         <input type="email" placeholder="email"><br>
+         <br>
+         <label for="">mobile number</label><br>
+         <input type="number" placeholder="mobile number"><br>
+         <br>
+         <label for="">DoB</label><br>
+         <input type="date"><br>
+         <br>
+         <label for="">password</label><br>
+         <input type="password" placeholder="password"><br>
+         <br>
+         <label for="">gender</label><br>
+         <select name="gen">
+         <option value="make">male</option>
+         <option value="female">female</option>
+         <option value="others">others</option>
+         </select><br>
+         <br>
+         <label for="">message</label><br>
+         <textarea name="" id="" cols="20" rows="3.5"></textarea>
+         <br>
+         
+         <br>
+         <button type="submit">submit</button>
+        </form>
+        <br>
+        <br>
+    
+
+    <div class="user-data">
+       <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>mobile number</th>
+            <th>DoB</th>
+            <th>password</th>
+            <th>gender</th>
+            <th>message</th>
+        </tr>
+       </table>
+
+    </div>
+
+</body>
+<script>
+form = document.querySelector('#form')
+form.addEventListener('submit',(e)=>{
+    e.preventDefault()
+
+    parent = document.querySelector('.user-data')
+
+    container =  document.createElement('div')
+
+    fN = document.createElement('p')
+    fN_data = document.querySelector([placeholder="firstname"])
+    fN.innerText = fN_data.value
+    container.append(fN)
+
+    lN = document.createElement('p')
+    lN_data = document.querySelector([placeholder="Lastname"])
+    lN.innerText = lN_data.value
+    container.append(lN)
+
+    //if(fN_data.value != '' && lN_data.value != ''){
+        parent.append(container)
+  //  }
+
+    fN_data.value = ''
+    lN_data.value = ''
+    console.log('form submitted');
+})
+  
+   form=document.querySelector('#form')
+   form.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    parent=document.querySelector('.user-data table')
+    row_table=  document.createElement('tr')
+    child=document.createElement('td')
+    data=document.querySelector([placeholder="firstname"])
+    child.innerText=data.value
+    row_table.append(child)
+    console.log('form summited')
+  })
+
+  form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+    
+        parent = document.querySelector('.user-data table')
+
+        row_table = document.createElement('tr')
+
+        arrData = ["First","Last","Email","Password","Mobile"]
+
+        for(let i of arrData){
+            fN = document.createElement('td')
+            fN_data = document.querySelector(`[placeholder*=${i}]`)
+            fN.innerText = fN_data.value
+            row_table.append(fN)
+            fN_data.value = ''
+        }
+        parent.append(row_table)
+    })
+
+
+
+   
+
+</script>
+</html>
